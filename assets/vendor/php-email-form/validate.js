@@ -1,8 +1,3 @@
-/**
- * PHP Email Form Validation - v3.2
- * URL: https://bootstrapmade.com/php-email-form/
- * Author: BootstrapMade.com
- */
 (function () {
   "use strict";
 
@@ -32,10 +27,16 @@
           grecaptcha.ready(function () {
             try {
               grecaptcha
-                .execute(recaptcha, { action: "php_email_form_submit" })
+                .execute(recaptcha, {
+                  action: "https://formspree.io/f/xnqwyazl",
+                })
                 .then((token) => {
                   formData.set("recaptcha-response", token);
-                  php_email_form_submit(thisForm, action, formData);
+                  php_email_form_submit(
+                    thisForm,
+                    "https://formspree.io/f/xnqwyazl",
+                    formData
+                  );
                 });
             } catch (error) {
               displayError(thisForm, error);
@@ -48,7 +49,11 @@
           );
         }
       } else {
-        php_email_form_submit(thisForm, action, formData);
+        php_email_form_submit(
+          thisForm,
+          "https://formspree.io/f/xnqwyazl",
+          formData
+        );
       }
     });
   });
@@ -61,7 +66,7 @@
     })
       .then((response) => {
         if (response.ok) {
-          return response.text();
+          return response;
         } else {
           throw new Error(
             `${response.status} ${response.statusText} ${response.url}`
@@ -70,7 +75,7 @@
       })
       .then((data) => {
         thisForm.querySelector(".loading").classList.remove("d-block");
-        if (data.trim() == "OK") {
+        if (data.ok) {
           thisForm.querySelector(".sent-message").classList.add("d-block");
           thisForm.reset();
         } else {
@@ -89,8 +94,8 @@
 
   function displayError(thisForm, error) {
     thisForm.querySelector(".loading").classList.remove("d-block");
-    thisForm.querySelector(".sent-message").innerHTML =
-      " Your message has been sent. Thank you!";
-    thisForm.querySelector(".sent-message").classList.add("d-block");
+    thisForm.querySelector(".error-message").innerHTML =
+      " Your message has not been sent. Try another time!";
+    thisForm.querySelector(".error-message").classList.add("d-block");
   }
 })();
