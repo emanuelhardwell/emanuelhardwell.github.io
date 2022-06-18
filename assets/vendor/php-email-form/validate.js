@@ -28,13 +28,13 @@
             try {
               grecaptcha
                 .execute(recaptcha, {
-                  action: "https://formspree.io/f/xnqwyazl",
+                  action: "https://formspree.io/f/mjvldbqp",
                 })
                 .then((token) => {
                   formData.set("recaptcha-response", token);
                   php_email_form_submit(
                     thisForm,
-                    "https://formspree.io/f/xnqwyazl",
+                    "https://formspree.io/f/mjvldbqp",
                     formData
                   );
                 });
@@ -51,7 +51,7 @@
       } else {
         php_email_form_submit(
           thisForm,
-          "https://formspree.io/f/xnqwyazl",
+          "https://formspree.io/f/mjvldbqp",
           formData
         );
       }
