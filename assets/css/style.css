@@ -463,6 +463,26 @@ section {
   background-color: #0563bb;
 }
 
+.bg-azul-f {
+  background-color: #2078ca !important;
+}
+
+.bg-verde {
+  background-color: rgb(112, 207, 112) !important;
+}
+
+.bg-naranja {
+  background-color: #fd847b !important;
+}
+
+.bg-azul {
+  background-color: #81e2fa !important;
+}
+
+.bg-morado {
+  background-color: #c3b0f8 !important;
+}
+
 /*--------------------------------------------------------------
 # Resume
 --------------------------------------------------------------*/
